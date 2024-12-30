@@ -8,18 +8,18 @@ def quick_sort(arr: list):
         return arr
 
     # Выбираем опорный элемент с помощью метода choice из библиотеки random
-    support_element = random.choice(arr)
+    mid = random.choice(arr)
     # Составляем подсписок из элементов которые меньше опорного
-    elements_are_smaller_than_the_reference_one = [el for el in arr if el < support_element]
+    list_smaller = [el for el in arr if el < mid]
     # Составляем подсписок из опорного элемента
-    list_of_the_reference_element = [el for el in arr if el == support_element]
+    list_mid = [el for el in arr if el == mid]
     # Составляем подсписок из элементов которые больше опорного
-    elements_are_larger_than_the_reference_one = [el for el in arr if el > support_element]
+    list_larger = [el for el in arr if el > mid]
 
     # Рекурсивно вызываем функцию quick_sort для каждого подмассива и возвращаем новый(отсортированный) список состоящий
     # из результатов работы вызванных функций
-    return quick_sort(elements_are_smaller_than_the_reference_one) + list_of_the_reference_element + quick_sort(
-        elements_are_larger_than_the_reference_one)
+    return quick_sort(list_smaller) + list_mid + quick_sort(
+        list_larger)
 
 
 if __name__ == '__main__':
